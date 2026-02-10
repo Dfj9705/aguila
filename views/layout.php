@@ -13,16 +13,16 @@
 
         <meta property="og:title" content="Armeria Águila Comandos">
         <meta property="og:description" content="Sitio web de Armeria Águila Comandos">
-        <meta property="og:image" content="<?= $_ENV['HOST'] ?>/images/logo.png">
+        <meta property="og:image" content="<?= $_ENV['HOST'] ?>/images/logo.jpeg">
         <meta property="og:url" content="<?= $_ENV['HOST'] ?>">
         <meta property="og:type" content="website">
-        <meta property="og:image:width" content="600">
-        <meta property="og:image:height" content="315">
+        <meta property="og:image:width" content="300">
+        <meta property="og:image:height" content="300">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Armeria Águila Comandos">
         <meta name="twitter:description" content="Sitio web de Armeria Águila Comandos">
-        <meta name="twitter:image" content="<?= $_ENV['HOST'] ?>/images/logo.png">
+        <meta name="twitter:image" content="<?= $_ENV['HOST'] ?>/images/logo.jpeg">
         <meta name="twitter:url" content="<?= $_ENV['HOST'] ?>">
 
         <meta http-equiv="Content-Language" content="es">
