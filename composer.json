@@ -1,0 +1,23 @@
+{
+    "name": "dfj9705/procode",
+    "description": "Pagina web procode innovations",
+    "type": "project",
+    "config": {
+        "platform-check": false
+    },
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./mvc",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models",
+            "Classes\\" : "./classes"
+        }
+    },
+    "require": {
+        "mpdf/mpdf": "^8.1",
+        "phpmailer/phpmailer": "^6.6",
+        "dompdf/dompdf": "^2.0",
+        "vlucas/phpdotenv": "^5.5",
+        "bramus/router": "^1.6"
+    }
+}
