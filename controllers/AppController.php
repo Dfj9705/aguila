@@ -34,6 +34,12 @@ class AppController
         render('pages/detalle', []);
     }
 
+    public static function tiposProductos($tipo)
+    {
+        echo $tipo;
+        // render('pages/tipos-productos', []);
+    }
+
 
 
 }
