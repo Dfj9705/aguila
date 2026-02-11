@@ -1,5 +1,5 @@
 <!-- Page Header Start -->
-<div class="container-fluid page-header py-5 mb-5 wow animate__animated animate__fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid page-header py-5 wow animate__animated animate__fadeIn" data-wow-delay="0.1s">
     <div class="container text-center py-5 mt-4">
         <h1 class="display-2 text-white mb-3 animated slideInDown">Contáctenos</h1>
     </div>
@@ -8,7 +8,7 @@
     <div class="container py-5">
         <div class="text-center mx-auto wow animate__animated animate__fadeIn" data-wow-delay="0.1s"
             style="max-width: 600px;">
-            <h1 class="display-6 mb-3">¿Tiene alguna duda? Contáctenos</h1>
+            <h1 class="display-6 mb-3 text-dark">¿Tiene alguna duda? Contáctenos</h1>
             <!-- <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor.</p> -->
         </div>
         <div class="row contact-info position-relative g-0 mb-5">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="ms-3" style="overflow: hidden">
                         <h5 class="text-white">Correo</h5>
-                        <h2 class="text-white mb-0">web@vcardsgt.com</h2>
+                        <h2 class="text-white mb-0">web@armeriaaguilacomandos.com</h2>
                     </div>
                 </a>
             </div>

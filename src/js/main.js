@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sticky Navbar
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
-            document.querySelector('.sticky-top').classList.add('bg-white', 'shadow-sm');
+            document.querySelector('.sticky-top').classList.add('shadow-sm', 'bg-dark');
             document.querySelector('.sticky-top').style.top = '-1px';
         } else {
             // document.querySelector('.sticky-top').classList.remove('bg-white', 'shadow-sm');

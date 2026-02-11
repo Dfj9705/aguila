@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 
     <head>
         <meta charset="utf-8">
+        <meta name="theme-color" content="#556B2F">
+        <meta name="theme-color" content="#556B2F" media="(prefers-color-scheme: dark)">
         <title><?= $_ENV['APP_NAME'] ?></title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta name="description" content="Sitio web de Armeria Águila Comandos">
@@ -49,7 +51,7 @@
     <body>
         <!-- Spinner Start -->
         <div id="spinner"
-            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex flex-column align-items-center justify-content-center">
+            class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex flex-column align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
             <p>Águila Comandos</p>
         </div>
@@ -58,10 +60,10 @@
 
 
         <!-- Brand Start -->
-        <div class="container-fluid bg-white pt-4 pb-5 d-none d-lg-flex">
+        <div class="container-fluid pt-4 pb-5 d-none d-lg-flex bg-dark">
             <div class="container pb-2">
                 <div class="d-flex align-items-center justify-content-between">
-                    <a href="/" class="h1 text-decoration-none fst-italic mb-0  text-black"><img src="/images/logo.png"
+                    <a href="/" class="h1 text-decoration-none fst-italic mb-0  text-white"><img src="/images/logo.png"
                             alt="" width="60px"><span class="align-middle">Águila
                             Comandos</span></a>
                     <small></small>
@@ -82,12 +84,12 @@
 
 
         <!-- Navbar Start -->
-        <div class="container-fluid sticky-top bg-white">
+        <div class="container-fluid sticky-top bg-dark">
             <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-0 px-lg-3">
-                    <a href="/" class="navbar-brand d-lg-none d-flex">
-                        <img src="/images/logo.png" alt="" width="50px" class="me-2">
-                    </a>
+                <nav class="navbar navbar-expand-lg text-white-50 py-lg-0 px-0 px-lg-3">
+                    <a href="/" class="h2 text-decoration-none d-lg-none fst-italic mb-0  text-white"><img
+                            src="/images/logo.png" alt="" width="60px"><span class="align-middle">Águila
+                            Comandos</span></a>
                     <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
                         data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -119,25 +121,30 @@
         <?= $contenido ?>
 
         <!-- Footer Start -->
-        <div class="container-fluid position-relative bg-light py-2 wow animate__animated animate__fadeIn"
+        <div class="container-fluid position-relative py-2 wow animate__animated animate__fadeIn bg-dark"
             data-wow-delay="0.1s">
             <div class="container">
                 <div class="row g-5 py-5">
                     <div class="col-lg-12 pe-lg-5">
-                        <a href="/" class="navbar-brand">
-                            <h1 class="h1 mb-0 fst-italic">Armeria Águila Comandos</h1>
+                        <a href="/" class="text-white text-decoration-none">
+                            <h1 class="h1 mb-0 fst-italic">Águila Comandos</h1>
                         </a>
-                        <p class="fs-6 mb-4 fst-italic">Donde la precisión, la pasión y la protección se encuentran
+                        <p class="fs-6 mb-4 fst-italic text-white">Donde la precisión, la pasión y la protección se
+                            encuentran
                         </p>
 
-                        <p><a class="text-decoration-none text-black-50" href="tel:+50277367641"><i
+                        <p><a class="text-decoration-none text-white-50" href="tel:+50277367641"><i
                                     class="fa fa-phone-alt me-2"></i>+502 77367641</p></a>
-                        <p><a class="text-decoration-none text-black-50"
+                        <p><a class="text-decoration-none text-white-50"
                                 href="https://wa.me/50232832297?text=Hola,%20quiero%20más%20información"><i
                                     class="fa fa-whatsapp me-2"></i>+502 32832297</p></a>
-                        <p><a class="text-decoration-none text-black-50"
+                        <p><a class="text-decoration-none text-white-50"
                                 href="mailto:<?= $_ENV['EMAIL_TO_ADDRESS'] ?>"><i
                                     class="fa fa-envelope me-2"></i><?= $_ENV['EMAIL_TO_ADDRESS'] ?></p></a>
+                        <p><a class="text-decoration-none text-white-50" target="_blank"
+                                href="https://www.google.com/maps/dir/?api=1&destination=armeria%20aguila%20comandos%2C%20jutiapa%2C%20jutiapa"><i
+                                    class="fa fa-map-marker-alt me-2"></i>Calle escuela, zona 0, local A, Jutiapa,
+                                Jutiapa</p></a>
                         <div class="d-flex mt-4">
                             <a class="btn btn-lg-square btn-primary me-2"
                                 href="https://www.instagram.com/vcardsgt?igsh=Z2FhcTMzazFnbmM3" target="__blank"><i

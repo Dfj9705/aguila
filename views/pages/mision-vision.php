@@ -1,11 +1,11 @@
 <!-- Page Header Start -->
-<div class="container-fluid page-header py-5 mb-5 wow animate__animated animate__fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid page-header py-5 wow animate__animated animate__fadeIn" data-wow-delay="0.1s">
     <div class="container text-center py-5 mt-4">
         <h1 class="display-2 text-white mb-3 animated slideInDown">Misión y Visión</h1>
     </div>
 </div>
 <!-- Page Header End -->
-<div class="container-fluid container-service py-5">
+<div class="container-fluid container-service py-5 text-dark">
     <div class="row">
         <div class="col-lg-6 py-5">
             <div class="text-center mx-auto wow animate__animated animate__fadeInLeft" data-wow-delay="0.1s"

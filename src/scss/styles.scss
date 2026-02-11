@@ -5,7 +5,7 @@
 /* Colores principales */
 --bs-primary:   #556B2F;   /* Verde oliva táctico: autoridad, militar, control */
 --bs-secondary: #1F3A5F;   /* Azul acero institucional: confianza y orden */
---bs-light:     #F2F2F2;   /* Blanco hueso: legible, sobrio, no cansa */
+--bs-light:     #ffffffed;   /* Blanco hueso: legible, sobrio, no cansa */
 
 /* Colores de apoyo */
 --bs-accent:  #8C6A3E;     /* Bronce oscuro: armas premium, jerarquía */
@@ -34,6 +34,7 @@
 }
 
 body {
+    background-color: var(--bs-light);
     font-family: 'Roboto', sans-serif;
   }
   
@@ -172,7 +173,7 @@ body {
 .navbar .navbar-nav .nav-link {
     margin-right: 35px;
     padding: 20px 0;
-    color: var(--bs-dark);
+    color: var(--bs-white);
     font-size: 18px;
     font-weight: 500;
     outline: none;
@@ -200,7 +201,7 @@ body {
 
     .navbar .navbar-nav {
         margin-top: 15px;
-        border-top: 1px solid #EEEEEE;
+        border-top: 0px solid #EEEEEE;
     }
 }
 
@@ -265,18 +266,31 @@ body {
     border: 15px solid var(--bs-primary);
 }
 
+@for $i from 1 through 2 {
+.carousel-item-#{$i} {
+    min-height: 40vh;
+    max-height: 40vh;
+   background: 
+      linear-gradient(rgba(25, 27, 22, 0.7), rgba(25, 27, 22, 0.9)),
+      url('../images/carousel/#{$i}.jpg') left center no-repeat;
+    background-size: cover;
+}
+}
+
 @media (max-width: 767.98px) {
-    #header-carousel .carousel-item {
-        position: relative;
-        min-height: 450px;
-        max-height: 450px;
-    }
-    
-    #header-carousel .carousel-item img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    @for $i from 1 through 2 {
+        #header-carousel .carousel-item-#{$i} {
+            position: relative;
+            min-height: 25vh;
+            max-height: 25vh;
+        }
+        
+        #header-carousel .carousel-item-#{$i} img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 }
 
@@ -299,9 +313,13 @@ body {
 
 
 /*** Features ***/
-.feature {
-    background: linear-gradient(rgba(3, 27, 78, .3), rgba(3, 27, 78, .3)), url('../images/feature.jpg') left center no-repeat;
+@for $i from 1 through 3 {
+  .feature-#{$i} {
+    background: 
+      linear-gradient(rgba(25, 27, 22, 0.7), rgba(25, 27, 22, 0.9)),
+      url('../images/feature-#{$i}.jpg') left center no-repeat;
     background-size: cover;
+  }
 }
 
 .feature-row {
@@ -447,17 +465,17 @@ body {
     position: relative;
 }
 
-.container-service::before {
-    position: absolute;
-    content: '';
-    background: var(--bs-light);
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 70%);
-    z-index: -1;
-}
+// .container-service::before {
+//     position: absolute;
+//     content: '';
+//     background: var(--bs-light);
+//     width: 100%;
+//     height: 100%;
+//     left: 0px;
+//     top: 0px;
+//     clip-path: polygon(0 0, 100% 0, 100% 30%, 0 70%);
+//     z-index: -1;
+// }
 
 .service-item {
     position: relative;

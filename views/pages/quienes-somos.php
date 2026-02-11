@@ -1,5 +1,5 @@
 <!-- Page Header Start -->
-<div class="container-fluid page-header py-5 mb-5 wow animate__animated animate__fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid page-header py-5 wow animate__animated animate__fadeIn" data-wow-delay="0.1s">
     <div class="container text-center py-5 mt-4">
         <h1 class="display-2 text-white mb-3 animated slideInDown">Quienes somos</h1>
     </div>
@@ -10,12 +10,10 @@
         <div class="col-lg-8 py-5">
             <div class="text-justify mx-auto wow animate__animated animate__fadeInLeft" data-wow-delay="0.1s"
                 style="text-align: justify;">
-                <p class="mb-5 fs-5">Hola! Vcards empresa especializada
-                    en activaciones, eventos corporativos
-                    y experiencias sensoriales.
-                    Combinamos creatividad, estrategia
-                    y producción para conectar marcas
-                    con personas.</p>
+                <p class="mb-5 fs-5 text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor tenetur
+                    cupiditate
+                    itaque maxime nulla cumque asperiores nostrum iste? Voluptate facilis qui culpa reiciendis eos at
+                    architecto inventore voluptatibus aspernatur rerum?</p>
             </div>
 
 
