@@ -50,7 +50,7 @@
     <body>
         <!-- Spinner Start -->
         <div id="spinner"
-            class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex flex-column align-items-center justify-content-center bg-dark">
+            class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex flex-column align-items-center justify-content-center bg-dark text-white-50">
             <div class="spinner-grow text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
             <p>Águila Comandos</p>
         </div>
@@ -85,13 +85,13 @@
         <!-- Navbar Start -->
         <div class="container-fluid sticky-top bg-dark">
             <div class="container">
-                <nav class="navbar navbar-expand-lg text-white-50 py-lg-0 px-0 px-lg-3">
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark text-white-50 py-lg-0 px-0 px-lg-3">
                     <a href="/" class="h2 text-decoration-none d-lg-none fst-italic mb-0  text-white"><img
                             src="/images/logo.png" alt="" width="60px"><span class="align-middle">Águila
                             Comandos</span></a>
-                    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+                    <button type="button" class="navbar-toggler me-0 text-white-50" data-bs-toggle="collapse"
                         data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon bg-dark text-white"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav">
