@@ -59,7 +59,7 @@
 
 
         <!-- Brand Start -->
-        <div class="container-fluid pt-4 pb-5 d-none d-lg-flex bg-dark">
+        <div class="container-fluid pt-4 pb-5 d-none d-lg-flex bg-dark text-white-50">
             <div class="container pb-2">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="/" class="h1 text-decoration-none fst-italic mb-0  text-white"><img src="/images/logo.png"

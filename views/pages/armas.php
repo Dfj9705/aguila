@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="col-lg-8" id="armasDiv">
+        <div class="col-lg-10" id="armasDiv">
 
         </div>
     </div>
