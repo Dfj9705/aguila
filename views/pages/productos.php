@@ -6,7 +6,7 @@
 </div>
 <!-- Page Header End -->
 <div class="container-fluid py-5">
-    <div class="container">
+    <div class="container text-white">
         <div class="row g-0 feature-row">
             <div class="col-md-12 feature-1 wow fadeIn" data-wow-delay="0.1s">
                 <div class="feature-item border h-100 p-5 text-center">

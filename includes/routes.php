@@ -3,6 +3,7 @@ require_once __DIR__ . '/../includes/app.php';
 
 use Bramus\Router\Router;
 use Controllers\AppController;
+use Controllers\ArmasController;
 use Controllers\ContactoController;
 use Controllers\CotizadorController;
 
@@ -38,6 +39,7 @@ $router->get('/productos/{tipo}', [AppController::class, 'tiposProductos']);
 // API agrupada
 $router->mount('/API', function () use ($router) {
     $router->post('/contacto/enviar', fn() => ContactoController::enviar());
+    $router->get('/armas/buscar', fn() => ArmasController::buscar());
 });
 
 // Ejecutar

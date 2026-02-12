@@ -2,10 +2,8 @@
 
 namespace Controllers;
 
-use Model\Anuncio;
-use Model\MontajeServicio;
-use Model\TipoServicio;
-use MVC\Router;
+use Model\Weapon;
+
 
 class AppController
 {
@@ -36,8 +34,29 @@ class AppController
 
     public static function tiposProductos($tipo)
     {
-        echo $tipo;
-        // render('pages/tipos-productos', []);
+        switch ($tipo) {
+            case 'armas':
+                $weapon = new Weapon();
+                $marcas = $weapon->getBrands();
+                $modelos = $weapon->getModels();
+                $calibres = $weapon->getCalibers();
+                $tipos_arma = $weapon->getWeaponTypes();
+                $minMaxPrice = $weapon->getMinMaxPrice();
+                render('pages/armas', [
+                    'marcas' => $marcas,
+                    'modelos' => $modelos,
+                    'calibres' => $calibres,
+                    'tipos_arma' => $tipos_arma,
+                    'minMaxPrice' => $minMaxPrice
+                ]);
+                break;
+            case 'municiones':
+                render('pages/municiones', []);
+                break;
+            case 'accesorios':
+                render('pages/accesorios', []);
+                break;
+        }
     }
 
 

@@ -5,9 +5,9 @@ use MVC\View;
 
 
 require __DIR__ . '/../vendor/autoload.php';
-
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
+
 
 ini_set('display_errors', $_ENV['DEBUG_MODE']);
 ini_set('display_startup_errors', $_ENV['DEBUG_MODE']);
@@ -19,10 +19,5 @@ View::init(
 
 require 'helpers.php';
 require 'funciones.php';
-require 'database.php';
 require 'routes.php';
 // Conectarnos a la base de datos
-
-
-
-ActiveRecord::setDB($db);

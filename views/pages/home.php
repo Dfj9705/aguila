@@ -57,7 +57,7 @@
 <!-- Features Start -->
 <div class="container-fluid py-5">
     <div class="container">
-        <div class="row g-0 feature-row">
+        <div class="row g-0 feature-row text-white">
             <div class="col-md-6 col-lg-4 feature-1 wow fadeIn" data-wow-delay="0.1s">
                 <div class="feature-item border h-100 p-5">
                     <h5 class="mb-3 fs-2 fw-bold">Armas</h5>

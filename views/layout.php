@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es">
 
     <head>
         <meta charset="utf-8">
         <meta name="theme-color" content="#556B2F">
-        <meta name="theme-color" content="#556B2F" media="(prefers-color-scheme: dark)">
         <title><?= $_ENV['APP_NAME'] ?></title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta name="description" content="Sitio web de Armeria Águila Comandos">
@@ -51,7 +50,7 @@
     <body>
         <!-- Spinner Start -->
         <div id="spinner"
-            class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex flex-column align-items-center justify-content-center">
+            class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex flex-column align-items-center justify-content-center bg-dark">
             <div class="spinner-grow text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
             <p>Águila Comandos</p>
         </div>
