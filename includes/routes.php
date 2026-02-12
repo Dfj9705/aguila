@@ -39,7 +39,7 @@ $router->get('/productos/{tipo}', [AppController::class, 'tiposProductos']);
 // API agrupada
 $router->mount('/API', function () use ($router) {
     $router->post('/contacto/enviar', fn() => ContactoController::enviar());
-    $router->get('/armas/buscar', fn() => ArmasController::buscar());
+    $router->post('/armas/buscar', fn() => ArmasController::buscar());
 });
 
 // Ejecutar

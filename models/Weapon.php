@@ -55,7 +55,7 @@ class Weapon extends ActiveRecord
     public function getBrands()
     {
         try {
-            $brands = $this->fetchArray("SELECT * FROM brands INNER JOIN weapons ON brands.id = weapons.brand_id WHERE weapons.status = 'ACTIVE' ORDER BY brands.name ASC");
+            $brands = $this->fetchArray("SELECT brands.id, brands.name FROM brands INNER JOIN weapons ON brands.id = weapons.brand_id WHERE weapons.status = 'ACTIVE' ORDER BY brands.name ASC");
             return $brands;
         } catch (Exception $e) {
             //throw $th;
@@ -65,7 +65,7 @@ class Weapon extends ActiveRecord
     public function getModels()
     {
         try {
-            $models = $this->fetchArray("SELECT * FROM brand_models INNER JOIN weapons ON brand_models.id = weapons.brand_model_id WHERE weapons.status = 'ACTIVE' ORDER BY brand_models.name ASC");
+            $models = $this->fetchArray("SELECT brand_models.id, brand_models.name FROM brand_models INNER JOIN weapons ON brand_models.id = weapons.brand_model_id WHERE weapons.status = 'ACTIVE' ORDER BY brand_models.name ASC");
             return $models;
         } catch (Exception $e) {
             //throw $th;
@@ -75,7 +75,7 @@ class Weapon extends ActiveRecord
     public function getCalibers()
     {
         try {
-            $calibers = $this->fetchArray("SELECT * FROM calibers INNER JOIN weapons ON calibers.id = weapons.caliber_id WHERE weapons.status = 'ACTIVE' ORDER BY calibers.name ASC");
+            $calibers = $this->fetchArray("SELECT calibers.id, calibers.name FROM calibers INNER JOIN weapons ON calibers.id = weapons.caliber_id WHERE weapons.status = 'ACTIVE' ORDER BY calibers.name ASC");
             return $calibers;
         } catch (Exception $e) {
             //throw $th;
@@ -85,7 +85,7 @@ class Weapon extends ActiveRecord
     public function getWeaponTypes()
     {
         try {
-            $weaponTypes = $this->fetchArray("SELECT * FROM weapon_types INNER JOIN weapons ON weapon_types.id = weapons.weapon_type_id WHERE weapons.status = 'ACTIVE' ORDER BY weapon_types.name ASC");
+            $weaponTypes = $this->fetchArray("SELECT weapon_types.id, weapon_types.name FROM weapon_types INNER JOIN weapons ON weapon_types.id = weapons.weapon_type_id WHERE weapons.status = 'ACTIVE' ORDER BY weapon_types.name ASC");
             return $weaponTypes;
         } catch (Exception $e) {
             //throw $th;
@@ -107,11 +107,42 @@ class Weapon extends ActiveRecord
     public function getAll()
     {
         try {
-            $weapons = $this->fetchArray("SELECT weapons.id, weapons.description, weapons.price, weapons.images, weapons.status, brands.name as brand, brand_models.name as model, calibers.name as caliber, weapon_types.name as weapon_type FROM weapons inner join brands on weapons.brand_id = brands.id inner join brand_models on weapons.brand_model_id = brand_models.id inner join calibers on weapons.caliber_id = calibers.id inner join weapon_types on weapons.weapon_type_id = weapon_types.id WHERE weapons.status = 'ACTIVE'");
+            $weapons = $this->fetchArray("SELECT weapons.id, weapons.description, weapons.price, weapons.images, weapons.status, brands.name as brand, brand_models.name as model, calibers.name as caliber, weapon_types.name as weapon_type ,
+            (select count(*) from weapon_units where weapon_units.weapon_id = weapons.id and weapon_units.status = 'IN_STOCK') as stock
+            FROM weapons inner join brands on weapons.brand_id = brands.id inner join brand_models on weapons.brand_model_id = brand_models.id inner join calibers on weapons.caliber_id = calibers.id inner join weapon_types on weapons.weapon_type_id = weapon_types.id WHERE weapons.status = 'ACTIVE'");
             return $weapons;
         } catch (Exception $e) {
             //throw $th;
             return [];
+        }
+    }
+
+    public function getByFilters($filters)
+    {
+        try {
+            $where = "";
+            if (!empty($filters['marcas'])) {
+                $where .= " AND weapons.brand_id IN (" . implode(',', $filters['marcas']) . ")";
+            }
+            if (!empty($filters['modelos'])) {
+                $where .= " AND weapons.brand_model_id IN (" . implode(',', $filters['modelos']) . ")";
+            }
+            if (!empty($filters['calibres'])) {
+                $where .= " AND weapons.caliber_id IN (" . implode(',', $filters['calibres']) . ")";
+            }
+            if (!empty($filters['tipos_arma'])) {
+                $where .= " AND weapons.weapon_type_id IN (" . implode(',', $filters['tipos_arma']) . ")";
+            }
+
+            $query = "SELECT weapons.id, weapons.description, weapons.price, weapons.images, weapons.status, brands.name as brand, brand_models.name as model, calibers.name as caliber, weapon_types.name as weapon_type ,
+            (select count(*) from weapon_units where weapon_units.weapon_id = weapons.id and weapon_units.status = 'IN_STOCK') as stock
+            FROM weapons inner join brands on weapons.brand_id = brands.id inner join brand_models on weapons.brand_model_id = brand_models.id inner join calibers on weapons.caliber_id = calibers.id inner join weapon_types on weapons.weapon_type_id = weapon_types.id WHERE weapons.status = 'ACTIVE' " . $where;
+
+            $weapons = $this->fetchArray($query);
+
+            return $weapons;
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
         }
     }
 }

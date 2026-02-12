@@ -2,23 +2,31 @@ const { Toast } = require("../funciones");
 
 
 const armasDiv = document.getElementById('armasDiv');
-
+const formFiltros = document.getElementById('formFiltros');
+const spinner2 = document.getElementById('spinner2');
 armasDiv.innerHTML = `
 
 `;
 
-const buscarArmas = async (e) => {
+const buscarArmas = async (e = null) => {
+    if (e) e.preventDefault();
+
+    const formData = new FormData(formFiltros);
+    armasDiv.innerHTML = ``;
     try {
+        spinner2.classList.remove('d-none');
         const url = `/API/armas/buscar`
         const headers = new Headers();
         headers.append('X-Requested-With', 'fetch');
         const config = {
-            method: 'GET',
+            method: 'POST',
             headers,
+            body: formData,
         }
 
         const respuesta = await fetch(url, config);
         const data = await respuesta.json();
+        spinner2.classList.add('d-none');
         console.log(data);
         const { codigo, mensaje, detalle, datos } = data;
 
@@ -36,8 +44,8 @@ const buscarArmas = async (e) => {
                 } else {
                     row.innerHTML = `
                         <div class="col-12">
-                            <div class="alert alert-info" role="alert">
-                                No se encontraron armas.
+                            <div class="alert alert-primary" role="alert">
+                                No se encontraron armas. Intenta con otros filtros.
                             </div>
                         </div>
                     `;
@@ -75,15 +83,20 @@ const construirCardArma = (arma) => {
     const cardLink = document.createElement('a');
     const carousel = document.createElement('div');
     const badgePrice = document.createElement('span');
+    const badgeAvailable = document.createElement('span');
     const cardFooter = document.createElement('div');
+    const cardHeader = document.createElement('div');
+    cardHeader.classList.add('card-header');
     cardFooter.classList.add('card-footer');
     cardFooter.classList.add('d-flex', 'justify-content-between', 'align-items-center');
     badgePrice.classList.add('badge', 'bg-success');
     badgePrice.textContent = `Q. ${Number(arma.price).toFixed(2)}`;
+    badgeAvailable.classList.add('badge', `${arma.stock > 0 ? 'bg-success' : 'bg-danger'}`, 'float-end');
+    badgeAvailable.textContent = `${arma.stock > 0 ? 'Disponible' : 'Agotado'}`;
     carousel.classList.add('carousel', 'slide');
     carousel.id = `carousel-${arma.id}`;
     carousel.setAttribute('data-bs-ride', 'carousel');
-    div.classList.add('col-md-4', 'col-lg-3', 'col-12');
+    div.classList.add('col-md-4', 'col-lg-4', 'col-12', 'mb-4', 'mb-lg-0', 'mb-xl-0');
     card.classList.add('card');
     card.style.height = '100%';
     cardBody.classList.add('card-body');
@@ -101,6 +114,8 @@ const construirCardArma = (arma) => {
     cardBody.appendChild(cardText);
     cardFooter.appendChild(badgePrice);
     cardFooter.appendChild(cardLink);
+    cardHeader.appendChild(badgeAvailable);
+    card.appendChild(cardHeader);
     card.appendChild(cardBody);
     card.appendChild(cardFooter);
     div.appendChild(card);
@@ -154,4 +169,5 @@ const construirCarousel = (arma, images) => {
     return carousel;
 }
 
+formFiltros.addEventListener('change', buscarArmas);
 buscarArmas();
