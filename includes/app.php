@@ -12,6 +12,7 @@ $dotenv->safeLoad();
 ini_set('display_errors', $_ENV['DEBUG_MODE']);
 ini_set('display_startup_errors', $_ENV['DEBUG_MODE']);
 error_reporting(-$_ENV['DEBUG_MODE']);
+ini_set('error_log', __DIR__ . '/../logs/error.log');
 View::init(
     __DIR__ . '/../views',          // ajusta a tu ruta real de views
     __DIR__ . '/../views/layout.php' // ajusta a tu layout real

@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Accessory;
 use Model\Ammo;
 use Model\Weapon;
 
@@ -79,7 +80,15 @@ class AppController
                 ]);
                 break;
             case 'accesorios':
-                render('pages/accesorios', []);
+                $accesorio = new Accessory();
+                $marcas = $accesorio->getBrands();
+                $tipos = $accesorio->getTypes();
+                $compatibles = $accesorio->getCompatibleBrandModels();
+                render('pages/accesorios', [
+                    'marcas' => $marcas,
+                    'tipos' => $tipos,
+                    'compatibles' => $compatibles,
+                ]);
                 break;
         }
     }

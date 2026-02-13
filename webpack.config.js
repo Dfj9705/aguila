@@ -36,6 +36,10 @@ module.exports = {
       import: './src/js/pages/municiones.js',
       dependOn: 'js/app',
     },
+    'js/pages/accesorios': {
+      import: './src/js/pages/accesorios.js',
+      dependOn: 'js/app',
+    },
     'css/styles': ['./src/scss/app.scss'],
   },
   output: {

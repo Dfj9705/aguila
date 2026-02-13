@@ -1,21 +1,21 @@
 const { Toast } = require("../funciones");
 
 
-const municionesDiv = document.getElementById('municionesDiv');
+const accesoriosDiv = document.getElementById('accesoriosDiv');
 const formFiltros = document.getElementById('formFiltros');
 const spinner2 = document.getElementById('spinner2');
-municionesDiv.innerHTML = `
+accesoriosDiv.innerHTML = `
 
 `;
 
-const buscarMuniciones = async (e = null) => {
+const buscarAccesorios = async (e = null) => {
     if (e) e.preventDefault();
 
     const formData = new FormData(formFiltros);
-    municionesDiv.innerHTML = ``;
+    accesoriosDiv.innerHTML = ``;
     try {
         spinner2.classList.remove('d-none');
-        const url = `/API/municiones/buscar`
+        const url = `/API/accesorios/buscar`
         const headers = new Headers();
         headers.append('X-Requested-With', 'fetch');
         const config = {
@@ -38,19 +38,19 @@ const buscarMuniciones = async (e = null) => {
                 const row = document.createElement('div');
                 row.classList.add('row');
                 if (datos.length > 0) {
-                    datos.forEach(municion => {
-                        row.appendChild(construirCardMunicion(municion));
+                    datos.forEach(accesorio => {
+                        row.appendChild(construirCardAccesorio(accesorio));
                     });
                 } else {
                     row.innerHTML = `
                         <div class="col-12">
                             <div class="alert alert-primary" role="alert">
-                                No se encontraron municiones. Intenta con otros filtros.
+                                No se encontraron accesorios. Intenta con otros filtros.
                             </div>
                         </div>
                     `;
                 }
-                municionesDiv.appendChild(row);
+                accesoriosDiv.appendChild(row);
                 break;
             case 2:
                 icon = "warning"
@@ -74,7 +74,7 @@ const buscarMuniciones = async (e = null) => {
     }
 }
 
-const construirCardMunicion = (municion) => {
+const construirCardAccesorio = (accesorio) => {
     const div = document.createElement('div');
     const card = document.createElement('div');
     const cardBody = document.createElement('div');
@@ -84,20 +84,20 @@ const construirCardMunicion = (municion) => {
     const carousel = document.createElement('div');
     const badgePrice = document.createElement('span');
     const badgeAvailable = document.createElement('span');
-    const badgeRounds = document.createElement('span');
+    const badgeCompatible = document.createElement('span');
     const cardFooter = document.createElement('div');
     const cardHeader = document.createElement('div');
     cardHeader.classList.add('card-header');
     cardFooter.classList.add('card-footer');
     cardFooter.classList.add('d-flex', 'justify-content-between', 'align-items-center');
     badgePrice.classList.add('badge', 'bg-success');
-    badgePrice.textContent = `Q. ${Number(municion.price_per_box).toFixed(2)}`;
-    badgeAvailable.classList.add('badge', `${municion.stock > 0 ? 'bg-success' : 'bg-danger'}`, 'float-end');
-    badgeAvailable.textContent = `${municion.stock > 0 ? 'Disponible' : 'Agotado'}`;
-    badgeRounds.classList.add('badge', 'bg-secondary');
-    badgeRounds.textContent = `${municion.rounds_per_box} cartuchos por caja`;
+    badgePrice.textContent = `Q. ${Number(accesorio.unit_price).toFixed(2)}`;
+    badgeAvailable.classList.add('badge', `${accesorio.stock > 0 ? 'bg-success' : 'bg-danger'}`, 'float-end');
+    badgeAvailable.textContent = `${accesorio.stock > 0 ? 'Disponible' : 'Agotado'}`;
+    badgeCompatible.classList.add('badge', 'bg-secondary');
+    badgeCompatible.textContent = `${accesorio.compatible_model ? accesorio.compatible_brand + ' ' + accesorio.compatible_model : 'Universal'}`;
     carousel.classList.add('carousel', 'slide');
-    carousel.id = `carousel-${municion.id}`;
+    carousel.id = `carousel-${accesorio.id}`;
     carousel.setAttribute('data-bs-ride', 'carousel');
     div.classList.add('col-md-4', 'col-lg-4', 'col-12', 'mb-4', 'mb-lg-0', 'mb-xl-0');
     card.classList.add('card');
@@ -106,17 +106,17 @@ const construirCardMunicion = (municion) => {
     cardTitle.classList.add('card-title');
     cardText.classList.add('card-text');
     cardLink.classList.add('btn', 'btn-primary');
-    cardTitle.textContent = `${municion.brand}  ${municion.caliber}`;
-    cardText.textContent = municion.description;
+    cardTitle.textContent = `${accesorio.name} ${accesorio.brand}`;
+    cardText.textContent = accesorio.description;
     cardLink.textContent = 'Ver más';
-    cardLink.href = `/detalle/municiones/${municion.id}`;
+    cardLink.href = `/detalle/accesorios/${accesorio.id}`;
     cardLink.style.marginBottom = '0';
-    carousel.appendChild(construirCarousel(municion, municion.images));
+    carousel.appendChild(construirCarousel(accesorio, accesorio.images));
     cardBody.appendChild(carousel);
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     cardFooter.appendChild(badgePrice);
-    cardFooter.appendChild(badgeRounds);
+    cardFooter.appendChild(badgeCompatible);
     cardFooter.appendChild(cardLink);
     cardHeader.appendChild(badgeAvailable);
     card.appendChild(cardHeader);
@@ -126,13 +126,13 @@ const construirCardMunicion = (municion) => {
     return div;
 }
 
-const construirCarousel = (municion, images) => {
+const construirCarousel = (accesorio, images) => {
     const imagesArray = JSON.parse(images);
     const carousel = document.createElement('div');
     const indicators = document.createElement('div');
     indicators.classList.add('carousel-indicators');
     carousel.classList.add('carousel', 'slide');
-    carousel.id = `carousel-${municion.id}`;
+    carousel.id = `carousel-${accesorio.id}`;
     carousel.setAttribute('data-bs-ride', 'carousel');
     const carouselInner = document.createElement('div');
     carouselInner.classList.add('carousel-inner');
@@ -150,7 +150,7 @@ const construirCarousel = (municion, images) => {
             carouselInner.appendChild(carouselItem);
             const indicator = document.createElement('button');
             indicator.type = 'button';
-            indicator.setAttribute('data-bs-target', `#carousel-${municion.id}`);
+            indicator.setAttribute('data-bs-target', `#carousel-${accesorio.id}`);
             indicator.setAttribute('data-bs-slide-to', index);
             indicator.setAttribute('aria-current', index === 0 ? 'true' : '');
             indicator.setAttribute('aria-label', `Slide ${index + 1}`);
@@ -173,5 +173,5 @@ const construirCarousel = (municion, images) => {
     return carousel;
 }
 
-formFiltros.addEventListener('change', buscarMuniciones);
-buscarMuniciones();
+formFiltros.addEventListener('change', buscarAccesorios);
+buscarAccesorios();

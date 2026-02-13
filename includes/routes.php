@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../includes/app.php';
 
 use Bramus\Router\Router;
+use Controllers\AccesoriosController;
 use Controllers\AppController;
 use Controllers\ArmasController;
 use Controllers\ContactoController;
@@ -36,11 +37,13 @@ $router->get('/productos', [AppController::class, 'productos']);
 $router->get('/contacto', [AppController::class, 'contacto']);
 $router->get('/detalle/{$tipo}/{$id}', [AppController::class, 'detalle']);
 $router->get('/productos/{tipo}', [AppController::class, 'tiposProductos']);
+$router->get('/detalle/accesorios/{$id}', [AppController::class, 'detalleAccesorio']);
 
 // API agrupada
 $router->mount('/API', function () use ($router) {
     $router->post('/contacto/enviar', fn() => ContactoController::enviar());
     $router->post('/armas/buscar', fn() => ArmasController::buscar());
+    $router->post('/accesorios/buscar', fn() => AccesoriosController::buscar());
     $router->post('/municiones/buscar', fn() => MunicionesController::buscar());
 });
 
