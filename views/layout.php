@@ -103,12 +103,16 @@
                         </div>
                         <div class="ms-auto d-none d-lg-flex">
                             <a class="btn btn-sm-square btn-primary ms-2" target="_blank" aria-label="Enlace a Facebook"
-                                href="https://www.facebook.com/share/19upZxaxV6/"><i class="bi bi-facebook"></i><span
-                                    class="d-none">Enlace a Facebook</span></a>
+                                href="https://www.facebook.com/share/1NmhsiXEEs/?mibextid=wwXIfr"><i
+                                    class="bi bi-facebook"></i><span class="d-none">Enlace a Facebook</span></a>
+                            <a class="btn btn-sm-square btn-primary ms-2" target="_blank" aria-label="Enlace a Facebook"
+                                href="https://www.facebook.com/share/18EFKQPoRt/?mibextid=wwXIfr
+"><i class="bi bi-facebook"></i><span class="d-none">Enlace a Facebook</span></a>
                             <a class="btn btn-sm-square btn-primary ms-2"
-                                href="https://www.facebook.com/share/19upZxaxV6/" target="__blank"><i
-                                    class="bi bi-instagram"></i></a>
-                            <a class="btn btn-sm-square btn-primary ms-2" href="" target="__blank"><i
+                                href="https://www.instagram.com/aguilacomandos?igsh=YmZvMHZtZXFmMWNl"
+                                target="__blank"><i class="bi bi-instagram"></i></a>
+                            <a class="btn btn-sm-square btn-primary ms-2"
+                                href="https://www.tiktok.com/@aguilacomandos?_r=1&_t=ZS-93qR40QmavM" target="__blank"><i
                                     class="bi bi-tiktok"></i></a>
                         </div>
                     </div>
@@ -146,13 +150,17 @@
                                 Jutiapa</p></a>
                         <div class="d-flex mt-4">
                             <a class="btn btn-lg-square btn-primary me-2"
-                                href="https://www.instagram.com/vcardsgt?igsh=Z2FhcTMzazFnbmM3" target="__blank"><i
-                                    class="bi bi-instagram"></i></a>
-                            <a class="btn btn-lg-square btn-primary me-2"
-                                href="https://www.facebook.com/share/19upZxaxV6/" target="__blank"><i
+                                href="https://www.facebook.com/share/1NmhsiXEEs/?mibextid=wwXIfr" target="__blank"><i
                                     class="bi bi-facebook"></i></a>
-                            <a class="btn btn-lg-square btn-primary me-2" href="https://www.tiktok.com/@vcardsgt"
-                                target="__blank"><i class="bi bi-tiktok"></i></a>
+                            <a class="btn btn-lg-square btn-primary me-2"
+                                href="https://www.facebook.com/share/18EFKQPoRt/?mibextid=wwXIfr" target="__blank"><i
+                                    class="bi bi-facebook"></i></a>
+                            <a class="btn btn-lg-square btn-primary me-2"
+                                href="https://www.instagram.com/aguilacomandos?igsh=YmZvMHZtZXFmMWNl"
+                                target="__blank"><i class="bi bi-instagram"></i></a>
+                            <a class="btn btn-lg-square btn-primary me-2"
+                                href="https://www.tiktok.com/@aguilacomandos?_r=1&_t=ZS-93qR40QmavM" target="__blank"><i
+                                    class="bi bi-tiktok"></i></a>
                             <!-- <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-instagram"></i></a> -->
                         </div>

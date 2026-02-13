@@ -68,7 +68,7 @@
                         </div>
                         <div class="row justify-content-center text-center mt-3 p-auto">
                             <div id="captcha" class="col">
-                                <div class="g-recaptcha w-100" data-sitekey="6LdjuDUqAAAAAOp5mYkapGH1Sd2pbknqOo4kehXX"
+                                <div class="g-recaptcha w-100" data-sitekey="<?= $_ENV['RECAPTCHA_SITE_KEY'] ?>"
                                     data-size="normal" data-callback="verificar" data-expired-callback="expirado"
                                     data-error-callback="error"></div>
 
