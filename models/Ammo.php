@@ -72,7 +72,9 @@ class Ammo extends ActiveRecord
                 $where .= " AND ammos.caliber_id IN (" . implode(',', $filters['calibres']) . ")";
             }
 
-            $query = "SELECT ammos.id, ammos.description, ammos.price_per_box, ammos.rounds_per_box, ammos.price, ammos.images, brands.name as brand, calibers.name as caliber
+            $query = "SELECT ammos.id, ammos.description, ammos.price_per_box, ammos.rounds_per_box, ammos.price, ammos.images, brands.name as brand, calibers.name as caliber,
+            (IFNULL((select sum(ammo_movements.boxes) from ammo_movements where ammo_movements.ammo_id = ammos.id and ammo_movements.type = 'IN'), 0)
+            - IFNULL((select sum(ammo_movements.boxes) from ammo_movements where ammo_movements.ammo_id = ammos.id and ammo_movements.type = 'OUT'), 0)) as stock
             FROM ammos inner join brands on ammos.brand_id = brands.id inner join calibers on ammos.caliber_id = calibers.id WHERE ammos.is_active = 1 " . $where;
 
             $municiones = $this->fetchArray($query);
@@ -89,8 +91,8 @@ class Ammo extends ActiveRecord
 
         try {
             $query = "SELECT ammos.id, ammos.name, ammos.description, ammos.price_per_box, ammos.rounds_per_box, ammos.price, ammos.images, brands.name as brand, calibers.name as caliber,
-            ((select sum(ammo_movements.boxes) from ammo_movements where ammo_movements.ammo_id = ammos.id and ammo_movements.type = 'IN')
-            - (select sum(ammo_movements.boxes) from ammo_movements where ammo_movements.ammo_id = ammos.id and ammo_movements.type = 'OUT')) as stock
+            (IFNULL((select sum(ammo_movements.boxes) from ammo_movements where ammo_movements.ammo_id = ammos.id and ammo_movements.type = 'IN'), 0)
+            - IFNULL((select sum(ammo_movements.boxes) from ammo_movements where ammo_movements.ammo_id = ammos.id and ammo_movements.type = 'OUT'), 0)) as stock
             FROM ammos inner join brands on ammos.brand_id = brands.id inner join calibers on ammos.caliber_id = calibers.id WHERE ammos.id = $id";
 
             $ammo = $this->fetchFirst($query);

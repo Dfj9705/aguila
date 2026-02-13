@@ -42,6 +42,10 @@ class AppController
                 $ammo = new Ammo();
                 $producto = $ammo->getAmmoById($id);
                 break;
+            case 'accesorios':
+                $accesorio = new Accessory();
+                $producto = $accesorio->getAccessoryById($id);
+                break;
 
             default:
                 break;

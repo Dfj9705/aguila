@@ -1,9 +1,18 @@
-<?php switch ($tipo) {
+<?php
+$title = '';
+$price = 0;
+switch ($tipo) {
     case 'armas':
         $title = $producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type'];
+        $price = $producto['price'];
         break;
     case 'municiones':
         $title = $producto['brand'] . ' ' . $producto['caliber'];
+        $price = $producto['price_per_box'];
+        break;
+    case 'accesorios':
+        $title = $producto['brand'] . ' ' . $producto['name'];
+        $price = $producto['unit_price'];
         break;
     default:
         # code...
@@ -65,8 +74,7 @@
             </p>
             <p>
                 <strong>Precio:</strong>
-                <span
-                    class="badge bg-primary"><?php echo isset($producto['price']) ? $producto['price'] : $producto['price_per_box']; ?></span>
+                <span class="badge bg-primary"><?php echo $price; ?></span>
             </p>
             <p>
                 <strong>Stock:</strong>

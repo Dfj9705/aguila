@@ -96,7 +96,9 @@ class Accessory extends ActiveRecord
                 $where .= " AND accessories.category_id IN (" . implode(',', $filters['tipos']) . ")";
             }
 
-            $query = "SELECT accessories.id, accessories.name, accessories.description, accessories.unit_price, accessories.stock_min, accessories.images, b1.name as brand, b2.name as compatible_brand, brand_models.name as compatible_model
+            $query = "SELECT accessories.id, accessories.name, accessories.description, accessories.unit_price, accessories.stock_min, accessories.images, b1.name as brand, b2.name as compatible_brand, brand_models.name as compatible_model,
+            (IFNULL((select sum(accessory_movements.quantity) from accessory_movements where accessory_movements.accessory_id = accessories.id and accessory_movements.type = 'IN'), 0)
+            - IFNULL((select sum(accessory_movements.quantity) from accessory_movements where accessory_movements.accessory_id = accessories.id and accessory_movements.type = 'OUT'), 0)) as stock
             FROM accessories inner join brands b1 on accessories.brand_id = b1.id left join brand_models on brand_models.id = accessories.compatible_brand_model_id left join brands b2 on brand_models.brand_id = b2.id WHERE accessories.is_active = 1 " . $where;
 
             $accesorios = $this->fetchArray($query);
@@ -108,14 +110,14 @@ class Accessory extends ActiveRecord
         }
     }
 
-    public function getAmmoById($id)
+    public function getAccessoryById($id)
     {
 
         try {
-            $query = "SELECT ammos.id, ammos.name, ammos.description, ammos.price_per_box, ammos.rounds_per_box, ammos.price, ammos.images, brands.name as brand, calibers.name as caliber,
-            ((select sum(ammo_movements.boxes) from ammo_movements where ammo_movements.ammo_id = ammos.id and ammo_movements.type = 'IN')
-            - (select sum(ammo_movements.boxes) from ammo_movements where ammo_movements.ammo_id = ammos.id and ammo_movements.type = 'OUT')) as stock
-            FROM ammos inner join brands on ammos.brand_id = brands.id inner join calibers on ammos.caliber_id = calibers.id WHERE ammos.id = $id";
+            $query = "SELECT accessories.id, accessories.name, accessories.description, accessories.unit_price, accessories.stock_min, accessories.images, b1.name as brand, b2.name as compatible_brand, brand_models.name as compatible_model,
+            (IFNULL((select sum(accessory_movements.quantity) from accessory_movements where accessory_movements.accessory_id = accessories.id and accessory_movements.type = 'IN'), 0)
+            - IFNULL((select sum(accessory_movements.quantity) from accessory_movements where accessory_movements.accessory_id = accessories.id and accessory_movements.type = 'OUT'), 0)) as stock
+            FROM accessories inner join brands b1 on accessories.brand_id = b1.id left join brand_models on brand_models.id = accessories.compatible_brand_model_id left join brands b2 on brand_models.brand_id = b2.id WHERE  accessories.id = $id";
 
             $ammo = $this->fetchFirst($query);
             return $ammo;
