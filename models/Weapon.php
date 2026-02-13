@@ -161,5 +161,19 @@ class Weapon extends ActiveRecord
             throw new Exception($e->getMessage());
         }
     }
+
+    public function getRelationProducts()
+    {
+        try {
+            //T0DO: relacion de productos
+            $query = "";
+
+            $weapon = $this->fetchFirst($query);
+            return $weapon;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            throw new Exception($e->getMessage());
+        }
+    }
 }
 

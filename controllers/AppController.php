@@ -33,18 +33,22 @@ class AppController
     {
 
         $producto = null;
+        $relacionados = [];
         switch ($tipo) {
             case 'armas':
                 $arma = new Weapon();
                 $producto = $arma->getWeaponById($id);
+                // $relacionados = $arma->getRelationProducts();
                 break;
             case 'municiones':
                 $ammo = new Ammo();
                 $producto = $ammo->getAmmoById($id);
+                // $relacionados = $ammo->getRelationProducts($producto['caliber_id']);
                 break;
             case 'accesorios':
                 $accesorio = new Accessory();
                 $producto = $accesorio->getAccessoryById($id);
+                // $relacionados = $accesorio->getRelationProducts($producto['caliber_id']);
                 break;
 
             default:
