@@ -28,7 +28,7 @@ class Email
         $this->mail->AddReplyTo($from ?? $_ENV['EMAIL_FROM_ADDRESS'], $name ?? $_ENV['EMAIL_FROM_ADDRESS']);
         $this->mail->setFrom($from ?? $_ENV['EMAIL_FROM_ADDRESS'], $name ?? $_ENV['EMAIL_FROM_ADDRESS']);
         $this->mail->isHTML(true);
-        $this->mail->addEmbeddedImage(__DIR__ . '/../public/images/vclargo.jpeg', 'logo', 'logo.jpeg');
+        $this->mail->addEmbeddedImage(__DIR__ . '/../public/images/logo.png', 'logo', 'logo.png');
     }
 
     public function generateEmail($subject = '', array $addresses = [], $body = ''): PHPMailer
