@@ -32,6 +32,10 @@ module.exports = {
       import: './src/js/pages/detalle.js',
       dependOn: 'js/app',
     },
+    'js/pages/municiones': {
+      import: './src/js/pages/municiones.js',
+      dependOn: 'js/app',
+    },
     'css/styles': ['./src/scss/app.scss'],
   },
   output: {

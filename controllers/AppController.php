@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Ammo;
 use Model\Weapon;
 
 
@@ -36,13 +37,18 @@ class AppController
                 $arma = new Weapon();
                 $producto = $arma->getWeaponById($id);
                 break;
+            case 'municiones':
+                $ammo = new Ammo();
+                $producto = $ammo->getAmmoById($id);
+                break;
 
             default:
                 break;
         }
 
         render('pages/detalle', [
-            'producto' => $producto
+            'producto' => $producto,
+            'tipo' => $tipo
         ]);
     }
 
@@ -55,17 +61,22 @@ class AppController
                 $modelos = $weapon->getModels();
                 $calibres = $weapon->getCalibers();
                 $tipos_arma = $weapon->getWeaponTypes();
-                $minMaxPrice = $weapon->getMinMaxPrice();
                 render('pages/armas', [
                     'marcas' => $marcas,
                     'modelos' => $modelos,
                     'calibres' => $calibres,
                     'tipos_arma' => $tipos_arma,
-                    'minMaxPrice' => $minMaxPrice
                 ]);
                 break;
             case 'municiones':
-                render('pages/municiones', []);
+                $ammo = new Ammo();
+                $marcas = $ammo->getBrands();
+                $calibres = $ammo->getCalibers();
+
+                render('pages/municiones', [
+                    'marcas' => $marcas,
+                    'calibres' => $calibres,
+                ]);
                 break;
             case 'accesorios':
                 render('pages/accesorios', []);

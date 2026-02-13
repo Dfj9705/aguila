@@ -7,9 +7,9 @@
 <!-- Page Header End -->
 <div class="container-fluid container-service py-5 text-dark">
     <div class="row">
-        <div class="col-lg-2" style="max-height: 50vh; overflow-y: auto;">
+        <div class="col-lg-2" style="max-height: 60vh; overflow-y: auto;">
             <h6>Filtros</h6>
-            <form id="formFiltros">
+            <form id="formFiltros" class="mb-3">
                 <div class="accordion accordion-flush bg-light" id="accordionExample">
                     <div class="accordion-item bg-light">
                         <h2 class="accordion-header text-dark">
@@ -103,6 +103,9 @@
                     </div>
                 </div>
             </form>
+            <a href="<?php echo $_ENV['HOST']; ?>/productos" class="btn btn-primary w-100" id="btnVolver"><i
+                    class="bi bi-arrow-left me-2"></i>Volver a
+                productos</a>
         </div>
 
         <div class="col-lg-10">

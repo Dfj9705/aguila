@@ -1,7 +1,19 @@
+<?php switch ($tipo) {
+    case 'armas':
+        $title = $producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type'];
+        break;
+    case 'municiones':
+        $title = $producto['brand'] . ' ' . $producto['caliber'];
+        break;
+    default:
+        # code...
+        break;
+}
+?>
 <div class="container-fluid page-header py-5 wow animate__animated animate__fadeIn" data-wow-delay="0.1s">
     <div class="container text-center py-5 mt-4">
         <h1 class="display-2 text-white mb-3 animated slideInDown">
-            <?php echo $producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type']; ?>
+            <?php echo $title; ?>
         </h1>
     </div>
 </div>
@@ -24,10 +36,9 @@
                         <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                             <a onclick="return false;" href="<?php echo $imgUrl; ?>" class="glightbox-product d-block"
                                 data-gallery="product-<?php echo $producto['id'] ?? '1'; ?>"
-                                data-title="<?php echo htmlspecialchars($producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type']); ?>">
+                                data-title="<?php echo htmlspecialchars($title); ?>">
                                 <img src="<?php echo $imgUrl; ?>" class="d-block w-100"
-                                    alt="<?php echo htmlspecialchars($producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type']); ?>"
-                                    style="cursor: zoom-in;">
+                                    alt="<?php echo htmlspecialchars($title); ?>" style="cursor: zoom-in;">
                             </a>
                         </div>
                     <?php endforeach; ?>
@@ -47,14 +58,15 @@
 
         <div class="col-md-4">
             <h2>
-                <?php echo $producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type']; ?>
+                <?php echo $title; ?>
             </h2>
             <p>
                 <?php echo $producto['description']; ?>
             </p>
             <p>
                 <strong>Precio:</strong>
-                <span class="badge bg-primary"><?php echo $producto['price']; ?></span>
+                <span
+                    class="badge bg-primary"><?php echo isset($producto['price']) ? $producto['price'] : $producto['price_per_box']; ?></span>
             </p>
             <p>
                 <strong>Stock:</strong>
@@ -62,8 +74,10 @@
                     class="badge <?php echo $producto['stock'] > 0 ? 'bg-success' : 'bg-danger'; ?>"><?php echo $producto['stock'] > 0 ? 'Disponible' : 'No disponible'; ?></span>
             </p>
 
-            <a href="<?php echo $_ENV['HOST']; ?>/productos/armas" class="btn btn-primary"><i
-                    class="bi bi-arrow-left me-2"></i>Volver a armas</a>
+            <a href="<?php echo $_ENV['HOST']; ?>/productos/<?php echo $tipo; ?>" class="btn btn-primary"><i
+                    class="bi bi-arrow-left me-2"></i>Volver a
+                <?php echo $tipo; ?>
+            </a>
         </div>
     </div>
 </div>

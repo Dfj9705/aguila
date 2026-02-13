@@ -6,6 +6,7 @@ use Controllers\AppController;
 use Controllers\ArmasController;
 use Controllers\ContactoController;
 use Controllers\CotizadorController;
+use Controllers\MunicionesController;
 
 $router = new Router();
 
@@ -40,6 +41,7 @@ $router->get('/productos/{tipo}', [AppController::class, 'tiposProductos']);
 $router->mount('/API', function () use ($router) {
     $router->post('/contacto/enviar', fn() => ContactoController::enviar());
     $router->post('/armas/buscar', fn() => ArmasController::buscar());
+    $router->post('/municiones/buscar', fn() => MunicionesController::buscar());
 });
 
 // Ejecutar
