@@ -1,49 +1,70 @@
 <div class="container-fluid page-header py-5 wow animate__animated animate__fadeIn" data-wow-delay="0.1s">
     <div class="container text-center py-5 mt-4">
-        <h1 class="display-2 text-white mb-3 animated slideInDown">Curso de DD.HH. y D.I.H.</h1>
+        <h1 class="display-2 text-white mb-3 animated slideInDown">
+            <?php echo $producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type']; ?>
+        </h1>
     </div>
 </div>
-<div class="container-fluid container-team py-5">
-    <div class="container pb-5">
-        <div class="row g-5 align-items-center mb-5">
-            <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                <img class="img-fluid w-100" src="images/detalle.jpg" alt="">
+<div class="container container-team py-5">
+    <div class="row justify-content-around">
+        <div class="col-md-5">
+            <?php $images = json_decode($producto['images'], true); ?>
+            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <?php foreach ($images as $index => $image): ?>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="<?php echo $index; ?>"
+                            class="<?php echo $index === 0 ? 'active' : ''; ?>"
+                            aria-current="<?php echo $index === 0 ? 'true' : 'false'; ?>"
+                            aria-label="Slide <?php echo $index + 1; ?>"></button>
+                    <?php endforeach; ?>
+                </div>
+                <div class="carousel-inner">
+                    <?php foreach ($images as $index => $image): ?>
+                        <?php $imgUrl = $_ENV['IMAGES_URL'] . $image; ?>
+                        <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <a onclick="return false;" href="<?php echo $imgUrl; ?>" class="glightbox-product d-block"
+                                data-gallery="product-<?php echo $producto['id'] ?? '1'; ?>"
+                                data-title="<?php echo htmlspecialchars($producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type']); ?>">
+                                <img src="<?php echo $imgUrl; ?>" class="d-block w-100"
+                                    alt="<?php echo htmlspecialchars($producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type']); ?>"
+                                    style="cursor: zoom-in;">
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <div class="col-md-6 wow animate__animated animate__fadeIn" data-wow-delay="0.5s">
-                <h2 class="mb-3">Curso de DD.HH. y D.I.H.</h3>
-                    <p class="mb-4">Este curso ofrece una comprensión integral de los principios fundamentales y las
-                        normativas que rigen los derechos humanos y el derecho internacional humanitario. Explora los
-                        conceptos teóricos y prácticos que sustentan estas áreas del derecho, así como su aplicación en
-                        situaciones reales a nivel nacional e internacional.</p>
-                    <h3>Contenido del Curso</h3>
-                    <p><strong>1. Introducción a los Derechos Humanos:</strong><br>
-                        - Definiciones y fundamentos de los derechos humanos.<br>
-                        - Evolución histórica de los derechos humanos.<br>
-                        - Instrumentos y mecanismos internacionales de protección de los derechos humanos.</p>
-                    <p><strong>2. Derecho Internacional Humanitario (DIH):</strong><br>
-                        - Principios básicos del DIH.<br>
-                        - Normas y convenciones internacionales relevantes.<br>
-                        - Aplicación del DIH en conflictos armados y situaciones de emergencia.</p>
-                    <p><strong>3. Temas Específicos en Derechos Humanos:</strong><br>
-                        - Derechos civiles y políticos.<br>
-                        - Derechos económicos, sociales y culturales.<br>
-                        - Derechos de los grupos vulnerables: mujeres, niños, personas con discapacidad, minorías, etc.
-                    </p>
-                    <p><strong>4. Protección y Defensa de los Derechos Humanos:</strong><br>
-                        - Función de los órganos internacionales y regionales de derechos humanos.<br>
-                        - Mecanismos de denuncia y monitoreo.<br>
-                        - El papel de la sociedad civil y las organizaciones no gubernamentales en la promoción y
-                        protección de los derechos humanos.</p>
-                    <p><strong>5. Aplicación Práctica: Estudio de Casos:</strong><br>
-                        - Análisis de casos reales de violaciones de derechos humanos y conflictos armados.<br>
-                        - Estudio de jurisprudencia relevante.<br>
-                        - Desarrollo de habilidades para la investigación y defensa de los derechos humanos.</p>
-                    <h3>Metodología de Enseñanza</h3>
-                    <p>El curso combina clases magistrales, discusiones en grupo, análisis de casos prácticos, estudios
-                        de jurisprudencia y trabajos de investigación. Se fomenta la participación activa de los
-                        estudiantes y se promueve el debate sobre temas controvertidos y actuales relacionados con los
-                        derechos humanos y el derecho internacional humanitario.</p>
-            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h2>
+                <?php echo $producto['brand'] . ' ' . $producto['model'] . ' ' . $producto['caliber'] . ' ' . $producto['weapon_type']; ?>
+            </h2>
+            <p>
+                <?php echo $producto['description']; ?>
+            </p>
+            <p>
+                <strong>Precio:</strong>
+                <span class="badge bg-primary"><?php echo $producto['price']; ?></span>
+            </p>
+            <p>
+                <strong>Stock:</strong>
+                <span
+                    class="badge <?php echo $producto['stock'] > 0 ? 'bg-success' : 'bg-danger'; ?>"><?php echo $producto['stock'] > 0 ? 'Disponible' : 'No disponible'; ?></span>
+            </p>
+
+            <a href="<?php echo $_ENV['HOST']; ?>/productos/armas" class="btn btn-primary"><i
+                    class="bi bi-arrow-left me-2"></i>Volver a armas</a>
         </div>
     </div>
 </div>
+<script src="<?php echo $_ENV['HOST']; ?>/build/js/pages/detalle.js"></script>

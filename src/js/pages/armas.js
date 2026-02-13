@@ -27,7 +27,7 @@ const buscarArmas = async (e = null) => {
         const respuesta = await fetch(url, config);
         const data = await respuesta.json();
         spinner2.classList.add('d-none');
-        console.log(data);
+
         const { codigo, mensaje, detalle, datos } = data;
 
         let icon = "info";
@@ -106,7 +106,7 @@ const construirCardArma = (arma) => {
     cardTitle.textContent = `${arma.brand} ${arma.model} ${arma.caliber} ${arma.weapon_type}`;
     cardText.textContent = arma.description;
     cardLink.textContent = 'Ver más';
-    cardLink.href = `/detalle/${arma.id}`;
+    cardLink.href = `/detalle/armas/${arma.id}`;
     cardLink.style.marginBottom = '0';
     carousel.appendChild(construirCarousel(arma, arma.images));
     cardBody.appendChild(carousel);

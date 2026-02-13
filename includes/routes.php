@@ -33,7 +33,7 @@ $router->get('/quienes-somos', [AppController::class, 'somos']);
 $router->get('/mision-vision', [AppController::class, 'mision']);
 $router->get('/productos', [AppController::class, 'productos']);
 $router->get('/contacto', [AppController::class, 'contacto']);
-$router->get('/detalle/{$id}', [AppController::class, 'detalle']);
+$router->get('/detalle/{$tipo}/{$id}', [AppController::class, 'detalle']);
 $router->get('/productos/{tipo}', [AppController::class, 'tiposProductos']);
 
 // API agrupada

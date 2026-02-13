@@ -27,9 +27,23 @@ class AppController
     {
         render('pages/contacto', []);
     }
-    public static function detalle($id)
+    public static function detalle($tipo, $id)
     {
-        render('pages/detalle', []);
+
+        $producto = null;
+        switch ($tipo) {
+            case 'armas':
+                $arma = new Weapon();
+                $producto = $arma->getWeaponById($id);
+                break;
+
+            default:
+                break;
+        }
+
+        render('pages/detalle', [
+            'producto' => $producto
+        ]);
     }
 
     public static function tiposProductos($tipo)

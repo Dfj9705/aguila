@@ -28,6 +28,10 @@ module.exports = {
       import: './src/js/pages/armas.js',
       dependOn: 'js/app',
     },
+    'js/pages/detalle': {
+      import: './src/js/pages/detalle.js',
+      dependOn: 'js/app',
+    },
     'css/styles': ['./src/scss/app.scss'],
   },
   output: {

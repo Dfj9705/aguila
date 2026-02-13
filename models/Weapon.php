@@ -145,5 +145,19 @@ class Weapon extends ActiveRecord
             throw new Exception($e->getMessage());
         }
     }
+
+    public function getWeaponById($id)
+    {
+        try {
+            $query = "SELECT weapons.id, weapons.description, weapons.price, weapons.images, weapons.status, brands.name as brand, brand_models.name as model, calibers.name as caliber, weapon_types.name as weapon_type ,
+            (select count(*) from weapon_units where weapon_units.weapon_id = weapons.id and weapon_units.status = 'IN_STOCK') as stock
+            FROM weapons inner join brands on weapons.brand_id = brands.id inner join brand_models on weapons.brand_model_id = brand_models.id inner join calibers on weapons.caliber_id = calibers.id inner join weapon_types on weapons.weapon_type_id = weapon_types.id WHERE weapons.id = $id";
+
+            $weapon = $this->fetchFirst($query);
+            return $weapon;
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
 }
 
