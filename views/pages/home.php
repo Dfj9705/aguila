@@ -16,8 +16,9 @@
                                     class="fs-4 mb-2 fst-italic text-white wow animate__animated animate__fadeIn text-start">
                                     Gran variedad de armas de fuego para diferentes propósitos.
                                 </p>
-                                <button class="btn btn-primary wow animate__animated animate__fadeIn">Ver
-                                    más</button>
+                                <a href="<?= $_ENV['HOST'] ?>/productos/armas"
+                                    class="btn btn-primary wow animate__animated animate__fadeIn">Ver
+                                    más</a>
                             </div>
                         </div>
                     </div>
@@ -36,8 +37,9 @@
                                     class="fs-4 mb-2 fst-italic text-white wow animate__animated animate__fadeIn text-end">
                                     Amplia variedad de municiones para diferentes calibres y propósitos.
                                 </p>
-                                <button class="btn btn-primary wow animate__animated animate__fadeIn">Ver
-                                    más</button>
+                                <a href="<?= $_ENV['HOST'] ?>/productos/municiones"
+                                    class="btn btn-primary wow animate__animated animate__fadeIn">Ver
+                                    más</a>
                             </div>
                         </div>
                     </div>
@@ -62,21 +64,21 @@
                 <div class="feature-item border h-100 p-5">
                     <h5 class="mb-3 fs-2 fw-bold">Armas</h5>
                     <p class="mb-3">Gran variedad de armas de fuego para diferentes propósitos.</p>
-                    <button class="btn btn-primary">Ver más</button>
+                    <a href="<?= $_ENV['HOST'] ?>/productos/armas" class="btn btn-primary">Ver más</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 feature-2 wow fadeIn" data-wow-delay="0.3s">
                 <div class="feature-item border h-100 p-5">
                     <h5 class="mb-3 fs-2 fw-bold">Municiones</h5>
                     <p class="mb-3">Amplia variedad de municiones para diferentes calibres y propósitos.</p>
-                    <button class="btn btn-primary">Ver más</button>
+                    <a href="<?= $_ENV['HOST'] ?>/productos/municiones" class="btn btn-primary">Ver más</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 feature-3 wow fadeIn" data-wow-delay="0.5s">
                 <div class="feature-item border h-100 p-5">
                     <h5 class="mb-3 fs-2 fw-bold">Accesorios</h5>
                     <p class="mb-3">Amplia variedad de accesorios para armas de fuego.</p>
-                    <button class="btn btn-primary">Ver más</button>
+                    <a href="<?= $_ENV['HOST'] ?>/productos/accesorios" class="btn btn-primary">Ver más</a>
                 </div>
             </div>
         </div>
