@@ -42,7 +42,7 @@ class Ammo extends ActiveRecord
     public function getBrands()
     {
         try {
-            $brands = $this->fetchArray("SELECT brands.id, brands.name FROM brands INNER JOIN ammos ON brands.id = ammos.brand_id WHERE ammos.is_active = 1 ORDER BY brands.name ASC");
+            $brands = $this->fetchArray("SELECT DISTINCT brands.id, brands.name FROM brands INNER JOIN ammos ON brands.id = ammos.brand_id WHERE ammos.is_active = 1 ORDER BY brands.name ASC");
             return $brands;
         } catch (Exception $e) {
             error_log($e->getMessage());
@@ -53,7 +53,7 @@ class Ammo extends ActiveRecord
     public function getCalibers()
     {
         try {
-            $calibers = $this->fetchArray("SELECT calibers.id, calibers.name FROM calibers INNER JOIN ammos ON calibers.id = ammos.caliber_id WHERE ammos.is_active = 1 ORDER BY calibers.name ASC");
+            $calibers = $this->fetchArray("SELECT DISTINCT calibers.id, calibers.name FROM calibers INNER JOIN ammos ON calibers.id = ammos.caliber_id WHERE ammos.is_active = 1 ORDER BY calibers.name ASC");
             return $calibers;
         } catch (Exception $e) {
             error_log($e->getMessage());

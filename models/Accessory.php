@@ -50,7 +50,7 @@ class Accessory extends ActiveRecord
     public function getBrands()
     {
         try {
-            $brands = $this->fetchArray("SELECT brands.id, brands.name FROM brands INNER JOIN accessories ON brands.id = accessories.brand_id WHERE accessories.is_active = 1 ORDER BY brands.name ASC");
+            $brands = $this->fetchArray("SELECT DISTINCT brands.id, brands.name FROM brands INNER JOIN accessories ON brands.id = accessories.brand_id WHERE accessories.is_active = 1 ORDER BY brands.name ASC");
             return $brands;
         } catch (Exception $e) {
             //throw $th;
@@ -62,7 +62,7 @@ class Accessory extends ActiveRecord
     public function getCompatibleBrandModels()
     {
         try {
-            $calibers = $this->fetchArray("SELECT brand_models.id, brand_models.name as model, brands.name as brand FROM brand_models INNER JOIN accessories ON brand_models.id = accessories.compatible_brand_model_id inner join brands on brand_models.brand_id = brands.id WHERE accessories.is_active = 1 ORDER BY brand_models.name ASC");
+            $calibers = $this->fetchArray("SELECT DISTINCT brand_models.id, brand_models.name as model, brands.name as brand FROM brand_models INNER JOIN accessories ON brand_models.id = accessories.compatible_brand_model_id inner join brands on brand_models.brand_id = brands.id WHERE accessories.is_active = 1 ORDER BY brand_models.name ASC");
             return $calibers;
         } catch (Exception $e) {
             //throw $th;
@@ -74,7 +74,7 @@ class Accessory extends ActiveRecord
     public function getTypes()
     {
         try {
-            $types = $this->fetchArray("SELECT accessory_categories.id, accessory_categories.name FROM accessory_categories INNER JOIN accessories ON accessory_categories.id = accessories.category_id WHERE accessories.is_active = 1 ORDER BY accessory_categories.name ASC");
+            $types = $this->fetchArray("SELECT DISTINCT accessory_categories.id, accessory_categories.name FROM accessory_categories INNER JOIN accessories ON accessory_categories.id = accessories.category_id WHERE accessories.is_active = 1 ORDER BY accessory_categories.name ASC");
             return $types;
         } catch (Exception $e) {
             error_log($e->getMessage());
