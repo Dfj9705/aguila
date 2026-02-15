@@ -87,11 +87,10 @@ const construirCardAccesorio = (accesorio) => {
     const badgeCompatible = document.createElement('span');
     const cardFooter = document.createElement('div');
     const cardHeader = document.createElement('div');
-    cardHeader.classList.add('card-header');
-    cardFooter.classList.add('card-footer');
-    cardFooter.classList.add('d-flex', 'justify-content-between', 'align-items-center');
-    badgePrice.classList.add('badge', 'bg-success');
-    badgePrice.textContent = `Q. ${Number(accesorio.unit_price).toFixed(2)}`;
+    cardHeader.classList.add('card-header', 'd-flex', 'justify-content-between', 'align-items-center');
+    cardFooter.classList.add('card-footer', 'd-flex', 'justify-content-between', 'align-items-center');
+    badgePrice.classList.add('badge', 'bg-success', 'fs-5');
+    badgePrice.textContent = `Q. ${Number(accesorio.unit_price).toLocaleString('es-GT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     badgeAvailable.classList.add('badge', `${accesorio.stock > 0 ? 'bg-success' : 'bg-danger'}`, 'float-end');
     badgeAvailable.textContent = `${accesorio.stock > 0 ? 'Disponible' : 'Agotado'}`;
     badgeCompatible.classList.add('badge', 'bg-secondary');
@@ -115,7 +114,7 @@ const construirCardAccesorio = (accesorio) => {
     cardBody.appendChild(carousel);
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
-    cardFooter.appendChild(badgePrice);
+    cardHeader.appendChild(badgePrice);
     cardFooter.appendChild(badgeCompatible);
     cardFooter.appendChild(cardLink);
     cardHeader.appendChild(badgeAvailable);

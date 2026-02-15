@@ -86,13 +86,28 @@ const construirCardArma = (arma) => {
     const badgeAvailable = document.createElement('span');
     const cardFooter = document.createElement('div');
     const cardHeader = document.createElement('div');
-    cardHeader.classList.add('card-header');
+    const badgeMagazine = document.createElement('span');
+    const badgecanion = document.createElement('span');
+    const badgeColor = document.createElement('span');
+
+    cardHeader.classList.add('card-header', 'd-flex', 'justify-content-between', 'align-items-center');
     cardFooter.classList.add('card-footer');
     cardFooter.classList.add('d-flex', 'justify-content-between', 'align-items-center');
-    badgePrice.classList.add('badge', 'bg-success');
-    badgePrice.textContent = `Q. ${Number(arma.price).toFixed(2)}`;
+    badgePrice.classList.add('badge', 'bg-success', 'float-start', 'fs-5');
+    badgePrice.textContent = `Q. ${Number(arma.price).toLocaleString('es-GT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     badgeAvailable.classList.add('badge', `${arma.stock > 0 ? 'bg-success' : 'bg-danger'}`, 'float-end');
     badgeAvailable.textContent = `${arma.stock > 0 ? 'Disponible' : 'Agotado'}`;
+    badgeMagazine.classList.add('badge', 'bg-primary', 'float-start');
+    badgeMagazine.textContent = `Cargador: ${arma.magazine_capacity} rounds`;
+    badgecanion.classList.add('badge', 'bg-primary', 'float-start');
+    badgecanion.textContent = `Largo del cañon: ${arma.barrel_length_mm}`;
+    badgeColor.classList.add('badge', 'float-start');
+    badgeColor.style.backgroundColor = `${arma.color}`;
+    badgeColor.textContent = `${arma.color_text}`;
+
+    badgeMagazine.style.display = `${arma.magazine_capacity > 0 ? 'block' : 'none'}`;
+    badgecanion.style.display = `${arma.barrel_length_mm > 0 ? 'block' : 'none'}`;
+    badgeColor.style.display = `${arma.color_text && arma.color ? 'block' : 'none'}`;
     carousel.classList.add('carousel', 'slide');
     carousel.id = `carousel-${arma.id}`;
     carousel.setAttribute('data-bs-ride', 'carousel');
@@ -112,7 +127,10 @@ const construirCardArma = (arma) => {
     cardBody.appendChild(carousel);
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
-    cardFooter.appendChild(badgePrice);
+    cardBody.appendChild(badgeMagazine);
+    cardBody.appendChild(badgecanion);
+    cardBody.appendChild(badgeColor);
+    cardHeader.appendChild(badgePrice);
     cardFooter.appendChild(cardLink);
     cardHeader.appendChild(badgeAvailable);
     card.appendChild(cardHeader);

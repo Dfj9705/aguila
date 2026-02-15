@@ -134,7 +134,7 @@ class Weapon extends ActiveRecord
                 $where .= " AND weapons.weapon_type_id IN (" . implode(',', $filters['tipos_arma']) . ")";
             }
 
-            $query = "SELECT weapons.id, weapons.description, weapons.price, weapons.images, weapons.status, brands.name as brand, brand_models.name as model, calibers.name as caliber, weapon_types.name as weapon_type ,
+            $query = "SELECT weapons.id, weapons.description, weapons.price, weapons.images, weapons.status, brands.name as brand, brand_models.name as model, calibers.name as caliber, weapon_types.name as weapon_type , weapons.color_text as color_text, weapons.color as color, weapons.barrel_length_mm as barrel_length_mm, weapons.magazine_capacity as magazine_capacity,
             (select count(*) from weapon_units where weapon_units.weapon_id = weapons.id and weapon_units.status = 'IN_STOCK') as stock
             FROM weapons inner join brands on weapons.brand_id = brands.id inner join brand_models on weapons.brand_model_id = brand_models.id inner join calibers on weapons.caliber_id = calibers.id inner join weapon_types on weapons.weapon_type_id = weapon_types.id WHERE weapons.status = 'ACTIVE' " . $where;
 
@@ -150,7 +150,7 @@ class Weapon extends ActiveRecord
     public function getWeaponById($id)
     {
         try {
-            $query = "SELECT weapons.id, weapons.description, weapons.price, weapons.images, weapons.status, brands.name as brand, brand_models.name as model, calibers.name as caliber, weapon_types.name as weapon_type ,
+            $query = "SELECT weapons.id, weapons.description, weapons.price, weapons.images, weapons.status, brands.name as brand, brand_models.name as model, calibers.name as caliber, weapon_types.name as weapon_type , weapons.color_text as color_text, weapons.color as color, weapons.barrel_length_mm as barrel_length_mm, weapons.magazine_capacity as magazine_capacity,
             (select count(*) from weapon_units where weapon_units.weapon_id = weapons.id and weapon_units.status = 'IN_STOCK') as stock
             FROM weapons inner join brands on weapons.brand_id = brands.id inner join brand_models on weapons.brand_model_id = brand_models.id inner join calibers on weapons.caliber_id = calibers.id inner join weapon_types on weapons.weapon_type_id = weapon_types.id WHERE weapons.id = $id";
 
