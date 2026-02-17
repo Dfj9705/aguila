@@ -95,6 +95,8 @@ switch ($tipo) {
             <p>
                 <?php echo $badges; ?>
             </p>
+            <a href="https://wa.me/502<?= $_ENV['TELEFONO'] ?>?text=Hola,%20quiero%20más%20información%20sobre%20el%20producto%20<?= $title ?>"
+                class="btn btn-success"><i class="fa fa-whatsapp me-2"></i> Consultar</a>
             <a href="<?php echo $_ENV['HOST']; ?>/productos/<?php echo $tipo; ?>" class="btn btn-primary"><i
                     class="bi bi-arrow-left me-2"></i>Volver a
                 <?php echo $tipo; ?>

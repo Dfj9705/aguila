@@ -121,7 +121,7 @@ const construirCardAccesorio = (accesorio) => {
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     cardHeader.appendChild(badgePrice);
-    cardFooter.appendChild(badgeCompatible);
+    cardBody.appendChild(badgeCompatible);
     cardFooter.appendChild(cardLink);
     cardHeader.appendChild(badgeAvailable);
     cardFooter.appendChild(buttonWhatsapp);

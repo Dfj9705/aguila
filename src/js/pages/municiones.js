@@ -122,7 +122,7 @@ const construirCardMunicion = (municion) => {
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     cardHeader.appendChild(badgePrice);
-    cardFooter.appendChild(badgeRounds);
+    cardBody.appendChild(badgeRounds);
     cardFooter.appendChild(cardLink);
     cardHeader.appendChild(badgeAvailable);
     cardFooter.appendChild(buttonWhatsapp);
