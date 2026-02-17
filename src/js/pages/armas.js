@@ -89,6 +89,7 @@ const construirCardArma = (arma) => {
     const badgeMagazine = document.createElement('span');
     const badgecanion = document.createElement('span');
     const badgeColor = document.createElement('span');
+    const buttonWhatsapp = document.createElement('a')
 
     cardHeader.classList.add('card-header', 'd-flex', 'justify-content-between', 'align-items-center');
     cardFooter.classList.add('card-footer');
@@ -123,6 +124,11 @@ const construirCardArma = (arma) => {
     cardLink.textContent = 'Ver más';
     cardLink.href = `/detalle/armas/${arma.id}`;
     cardLink.style.marginBottom = '0';
+    buttonWhatsapp.classList.add('btn', 'btn-success');
+    buttonWhatsapp.innerHTML = '<i class="fa fa-whatsapp me-2"></i> Consultar';
+    buttonWhatsapp.href = `https://wa.me/502${process.env.TELEFONO}?text=Hola,%20quiero%20más%20información%20sobre%20el%20producto%20${arma.brand}%20${arma.model}%20${arma.caliber}%20${arma.weapon_type}`;
+    buttonWhatsapp.target = '_blank';
+    buttonWhatsapp.style.marginBottom = '0';
     carousel.appendChild(construirCarousel(arma, arma.images));
     cardBody.appendChild(carousel);
     cardBody.appendChild(cardTitle);
@@ -133,6 +139,7 @@ const construirCardArma = (arma) => {
     cardHeader.appendChild(badgePrice);
     cardFooter.appendChild(cardLink);
     cardHeader.appendChild(badgeAvailable);
+    cardFooter.appendChild(buttonWhatsapp);
     card.appendChild(cardHeader);
     card.appendChild(cardBody);
     card.appendChild(cardFooter);

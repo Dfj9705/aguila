@@ -87,6 +87,7 @@ const construirCardAccesorio = (accesorio) => {
     const badgeCompatible = document.createElement('span');
     const cardFooter = document.createElement('div');
     const cardHeader = document.createElement('div');
+    const buttonWhatsapp = document.createElement('a')
     cardHeader.classList.add('card-header', 'd-flex', 'justify-content-between', 'align-items-center');
     cardFooter.classList.add('card-footer', 'd-flex', 'justify-content-between', 'align-items-center');
     badgePrice.classList.add('badge', 'bg-success', 'fs-5');
@@ -110,6 +111,11 @@ const construirCardAccesorio = (accesorio) => {
     cardLink.textContent = 'Ver más';
     cardLink.href = `/detalle/accesorios/${accesorio.id}`;
     cardLink.style.marginBottom = '0';
+    buttonWhatsapp.classList.add('btn', 'btn-success');
+    buttonWhatsapp.innerHTML = '<i class="fa fa-whatsapp me-2"></i> Consultar';
+    buttonWhatsapp.href = `https://wa.me/502${process.env.TELEFONO}?text=Hola,%20quiero%20más%20información%20sobre%20el%20producto%20${accesorio.name}%20${accesorio.brand}`;
+    buttonWhatsapp.target = '_blank';
+    buttonWhatsapp.style.marginBottom = '0';
     carousel.appendChild(construirCarousel(accesorio, accesorio.images));
     cardBody.appendChild(carousel);
     cardBody.appendChild(cardTitle);
@@ -118,6 +124,7 @@ const construirCardAccesorio = (accesorio) => {
     cardFooter.appendChild(badgeCompatible);
     cardFooter.appendChild(cardLink);
     cardHeader.appendChild(badgeAvailable);
+    cardFooter.appendChild(buttonWhatsapp);
     card.appendChild(cardHeader);
     card.appendChild(cardBody);
     card.appendChild(cardFooter);
