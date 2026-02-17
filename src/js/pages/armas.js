@@ -112,7 +112,7 @@ const construirCardArma = (arma) => {
     carousel.classList.add('carousel', 'slide');
     carousel.id = `carousel-${arma.id}`;
     carousel.setAttribute('data-bs-ride', 'carousel');
-    div.classList.add('col-md-4', 'col-lg-4', 'col-12', 'mb-4', 'mb-lg-0', 'mb-xl-0');
+    div.classList.add('col-md-4', 'col-lg-4', 'col-12', 'mb-4', 'mb-lg-4', 'mb-xl-4');
     card.classList.add('card');
     card.style.height = '100%';
     cardBody.classList.add('card-body');
