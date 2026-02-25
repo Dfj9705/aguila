@@ -90,7 +90,7 @@ const construirCardAccesorio = (accesorio) => {
     const buttonWhatsapp = document.createElement('a')
     cardHeader.classList.add('card-header', 'd-flex', 'justify-content-between', 'align-items-center');
     cardFooter.classList.add('card-footer', 'd-flex', 'justify-content-between', 'align-items-center');
-    badgePrice.classList.add('badge', 'bg-success', 'fs-5');
+    badgePrice.classList.add('badge', 'bg-success-subtle', 'text-success', 'fs-5');
     badgePrice.textContent = `Q. ${Number(accesorio.unit_price).toLocaleString('es-GT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     badgeAvailable.classList.add('badge', `${accesorio.stock > 0 ? 'bg-success' : 'bg-danger'}`, 'float-end');
     badgeAvailable.textContent = `${accesorio.stock > 0 ? 'Disponible' : 'Agotado'}`;

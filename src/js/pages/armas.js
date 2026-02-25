@@ -94,7 +94,7 @@ const construirCardArma = (arma) => {
     cardHeader.classList.add('card-header', 'd-flex', 'justify-content-between', 'align-items-center');
     cardFooter.classList.add('card-footer');
     cardFooter.classList.add('d-flex', 'justify-content-between', 'align-items-center');
-    badgePrice.classList.add('badge', 'bg-success', 'float-start', 'fs-5');
+    badgePrice.classList.add('badge', 'bg-success-subtle', 'text-success', 'float-start', 'fs-5');
     badgePrice.textContent = `Q. ${Number(arma.price).toLocaleString('es-GT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     badgeAvailable.classList.add('badge', `${arma.stock > 0 ? 'bg-success' : 'bg-danger'}`, 'float-end');
     badgeAvailable.textContent = `${arma.stock > 0 ? 'Disponible' : 'Agotado'}`;
